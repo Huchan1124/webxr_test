@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="zh_TW">
+<!doctype html>
+<html>
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Hello WebXR!</title>
+
     <!-- three.js -->
     <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
 </head>
 
 <body>
+
+    <!-- Starting an immersive WebXR session requires user interaction.
+    We start this one with a simple button. -->
     <button onclick="activateXR()">Start Hello WebXR</button>
     <script>
         async function activateXR() {
@@ -19,6 +23,7 @@
             document.body.appendChild(canvas);
             const gl = canvas.getContext("webgl", { xrCompatible: true });
 
+            // To be continued in upcoming steps.
             const scene = new THREE.Scene();
 
             // The cube will have a different color on each side.
@@ -32,7 +37,7 @@
             ];
 
             // Create the cube and add it to the demo scene.
-            const cube = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.2, 0.2), materials);
+            const cube = new THREE.Mesh(new THREE.BoxBufferGeometry(0.2, 0.2, 0.2), materials);
             cube.position.set(1, 1, 1);
             scene.add(cube);
 
@@ -60,7 +65,6 @@
             // A 'local' reference space has a native origin that is located
             // near the viewer's position at the time the session was created.
             const referenceSpace = await session.requestReferenceSpace('local');
-
             // Create a render loop that allows us to draw on the AR view.
             const onXRFrame = (time, frame) => {
                 // Queue up the next draw request.
@@ -91,7 +95,6 @@
             session.requestAnimationFrame(onXRFrame);
         }
     </script>
-
 </body>
 
 </html>
