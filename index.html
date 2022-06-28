@@ -1,18 +1,18 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="zh_TW">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Hello WebXR!</title>
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <!-- three.js -->
-    <script src="https://unpkg.com/three@0.126.0/build/three.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"
+        integrity="sha512-0tlhMhMGPohLm/YwaskxH7jJuUGqU/XPTl+HE0dWrhGbpEBRIZYMQdbHC0CmyNPzZKTBd8JoVZnvMcL7hzlFOg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
-
     <!-- Starting an immersive WebXR session requires user interaction.
     We start this one with a simple button. -->
     <button onclick="activateXR()">Start Hello WebXR</button>
@@ -37,7 +37,7 @@
             ];
 
             // Create the cube and add it to the demo scene.
-            const cube = new THREE.Mesh(new THREE.BoxBufferGeometry(0.2, 0.2, 0.2), materials);
+            const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), materials);
             cube.position.set(1, 1, 1);
             scene.add(cube);
 
